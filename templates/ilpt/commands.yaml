@@ -13,7 +13,7 @@ commands:
   - runtime: "BASH"
     priority: 200
     after: true
-        script: |
+    script: |
           cd $workingDirectory;
           terraform show -json terraformLibrary.tfPlan > tfplan.json;
           echo "Checkint Open Policy Agent Policy";
