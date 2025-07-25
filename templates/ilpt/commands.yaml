@@ -8,7 +8,7 @@ commands:
           new Opa().loadTool(
             "$workingDirectory",
             "$bashToolsDirectory",
-            "0.44.0")
+            "1.6.0")
           "Opa Download Completed..."
   - runtime: "BASH"
     priority: 200
