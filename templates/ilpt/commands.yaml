@@ -7,11 +7,12 @@ commands:
       new TerraTag().loadTool(
         "$workingDirectory",
         "$bashToolsDirectory",
-        "0.1.48")
+        "0.7.3")
       "Terratag download completed"
   - runtime: "BASH"
     priority: 200
     before: true
     script: |
       cd $workingDirectory
+      pier
       terratag -tags="{\"environment_id\": \"development\"}"
