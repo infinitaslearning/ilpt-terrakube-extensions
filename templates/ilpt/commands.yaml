@@ -17,15 +17,13 @@ commands:
           cd $workingDirectory;
           terraform show -json terraformLibrary.tfPlan > tfplan.json;
           echo "Checkint Open Policy Agent Policy";
-          echo $workingDirectory
-          dir .terrakube/toolsRepository/policy/
           opaCheck=$(opa exec --decision terraform/analysis/notallowedlocationsmsg --bundle .terrakube/toolsRepository/policy/ tfplan.json | jq '.result[0].result');
 
           echo $opaCheck
-          if [ "$opaCheck" == "true" ]; then
-            echo "Policy is valid"
+          if [ "$opaCheck" == "{}" ]; then
+            echo "Location policy is valid"
             exit 0
           else
-            echo "Policy is invalid"
+            echo "location policy is invalid"
             exit 1
           fi
