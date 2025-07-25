@@ -19,6 +19,7 @@ commands:
           echo "Checkint Open Policy Agent Policy";
           opaCheck=$(opa exec --decision terraform/analysis/notallowedlocationsmsg --bundle .terrakube/toolsRepository/policy/ tfplan.json | jq '.result[0].result');
 
+          echo $opaCheck
           if [ "$opaCheck" == "true" ]; then
             echo "Policy is valid"
             exit 0
