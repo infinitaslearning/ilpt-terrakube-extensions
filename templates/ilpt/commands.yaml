@@ -17,8 +17,8 @@ commands:
           cd $workingDirectory;
           terraform show -json terraformLibrary.tfPlan > tfplan.json;
           echo "Checkint Open Policy Agent Policy";
+          echo $workingDirectory
           dir .terrakube/toolsRepository/policy/
-          ls .terrakube/toolsRepository/policy/
           opaCheck=$(opa exec --decision terraform/analysis/notallowedlocationsmsg --bundle .terrakube/toolsRepository/policy/ tfplan.json | jq '.result[0].result');
 
           echo $opaCheck
