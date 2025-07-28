@@ -24,7 +24,7 @@ commands:
           echo "na location"
           echo $opaChecktags
           echo "voor if"
-          if [ "$opaChecklocation" == "{}" and "$opaChecktags" == "{}" ]; then
+          if [ "$opaChecklocation" == "{}" && "$opaChecktags" == "{}" ]; then
             echo "Policies are valid"
             exit 0
           else
