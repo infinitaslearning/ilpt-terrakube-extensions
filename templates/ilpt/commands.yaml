@@ -21,11 +21,13 @@ commands:
           opaChecktags=$(opa exec --decision terraform/analysis/checktags --bundle .terrakube/toolsRepository/policy/ tfplan.json | jq '.result[0].result');
 
           echo $opaChecklocation
+          echo "na location"
           echo $opaChecktags
+          echo "voor if"
           if [ "$opaChecklocation" == "{}" and "$opaChecktags" == "{}" ]; then
-            echo "Policies is valid"
+            echo "Policies are valid"
             exit 0
           else
-            echo "Policies is invalid"
+            echo "Policies are invalid"
             exit 1
           fi
