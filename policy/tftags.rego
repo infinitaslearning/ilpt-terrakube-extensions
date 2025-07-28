@@ -8,7 +8,7 @@ import input as tfplan
 
 opco_abbreviations := ["PU","NU","IL","IM","LI","LL","DB"]
 team_abbreviations := ["ccc","pe","he","se","da","sims","ecom","integ","pro","oda","lx","umc","ebook"]
-dtap_abbreviations := ["dev","acc","tet","stg","prd","shared","nonprd"]
+dtap_abbreviations := ["dev","acc","tst","stg","prd","shared","nonprd"]
 segment_abbreviations := ["itops","pe","he","se","da","sims","ecom","integ","pro","oda","lx","finops","ilpt"]
 
 
