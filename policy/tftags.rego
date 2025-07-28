@@ -100,7 +100,7 @@ checktags[msg] if {
 
 checktags[msg] if {
 	some res in notallowedopco
-	msg := sprintf("opco %s is not allowed on %s",[res.change.after.tags["Opco"] ,res.address])
+	msg := sprintf("opco %s is not allowed on %s. valid values are %s.",[res.change.after.tags["Opco"] ,res.address, opco_abbreviations])
 	value := true
 }
 
@@ -112,7 +112,7 @@ checktags[msg] if {
 
 checktags[msg] if {
 	some res in notallowedteam
-	msg := sprintf("Team %s is not allowed on %s",[res.change.after.tags["Team"] ,res.address])
+	msg := sprintf("Team %s is not allowed on %s. valid values are %s.",[res.change.after.tags["Team"] ,res.address, team_abbreviations])
 	value := true
 }
 
@@ -124,7 +124,7 @@ checktags[msg] if {
 
 checktags[msg] if {
 	some res in notallowedsegment
-	msg := sprintf("Segment %s is not allowed on %s",[res.change.after.tags["Segment"] ,res.address])
+	msg := sprintf("Segment %s is not allowed on %s. valid values are %s.",[res.change.after.tags["Segment"] ,res.address, segment_abbreviations])
 	value := true
 }
 
