@@ -22,7 +22,7 @@ commands:
 
           echo $opaChecklocation
           echo $opaChecktags
-          if [ "$opaChecklocation" == "{}"] && ["$opaChecktags" == "{}" ]; then
+          if [ "$opaChecklocation" == "{}" ] && ["$opaChecktags" == "{}" ]; then
             echo "Policies are valid"
             exit 0
           else
