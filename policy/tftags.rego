@@ -10,7 +10,7 @@ opco_abbreviations := ["PU","NU","IL","IM","LI","LL","DB"]
 team_abbreviations := ["ccc","pe","he","se","da","sims","ecom","integ","pro","oda","lx","umc","ebook"]
 dtap_abbreviations := ["dev","acc","tst","stg","prd","shared","nonprd"]
 segment_abbreviations := ["itops","pe","he","se","da","sims","ecom","integ","pro","oda","lx","finops","ilpt"]
-
+tag_resource_ignorelist := ["azurerm_app_service_managed_certificate","azurerm_app_service_certificate","azurerm_key_vault_certificate"]
 
 #########
 # Policy
@@ -23,6 +23,7 @@ all_resources := [res | res := input.resource_changes[_]; res.change.actions[_] 
 missingAllTags := [res |
 		some res in all_resources
 		res.change.after.tags == {}
+		not res.type in tag_resource_ignorelist
 ]
 
 #check DTAP tags
@@ -34,6 +35,7 @@ notalloweddtap := [res |
 missingdtap := [res |
 		some res in all_resources
 		not "DTAP" in object.keys(res.change.after.tags) 
+		not res.type in tag_resource_ignorelist
 ]
 
 #checking opco tags
@@ -45,17 +47,19 @@ notallowedopco := [res |
 missingopco := [res |
 		some res in all_resources
 		not "Opco" in object.keys(res.change.after.tags) 
+		not res.type in tag_resource_ignorelist
 ]
 
 #checking team tags
 notallowedteam := [res |
 		some res in all_resources
-		not res.change.after.tags["Team"] in team_abbreviations
+		not res.change.after.tags["Team"] in team_abbreviations 
 	]
 
 missingteam := [res |
 		some res in all_resources
 		not "Team" in object.keys(res.change.after.tags) 
+		not res.type in tag_resource_ignorelist
 ]
 
 #checking Segment tags
@@ -67,16 +71,19 @@ notallowedsegment := [res |
 missingsegment := [res |
 		some res in all_resources
 		not "Segment" in object.keys(res.change.after.tags) 
+		not res.type in tag_resource_ignorelist
 ]
 
 missingrelated := [res |
 		some res in all_resources
 		not "Related" in object.keys(res.change.after.tags) 
+		not res.type in tag_resource_ignorelist
 ]
 
 missingsourcerepository := [res |
 		some res in all_resources
 		not "Source_repository" in object.keys(res.change.after.tags) 
+		not res.type in tag_resource_ignorelist
 ]
 
 #NOW check the values and give message back.
